@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root',
@@ -19,5 +19,9 @@ export class LocalStorageService {
       console.error('Error getting data from localStorage', e);
       return null;
     }
+  }
+
+  public clear(): void {
+    localStorage.clear();
   }
 }
