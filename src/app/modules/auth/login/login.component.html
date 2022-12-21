@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <div class="wrapper__content">
+    <mat-card>
+      <mat-card-content>
+        <h2>Log In</h2>
+
+        <mat-error *ngIf="errorMessage | async as msg">
+          {{msg}}
+        </mat-error>
+
+        <form [formGroup]="form" (ngSubmit)="login()">
+          <mat-form-field class="example-full-width">
+            <mat-label>Login</mat-label>
+            <input matInput placeholder="Login" formControlName="login" required>
+            <mat-error *ngIf="form.controls.login.invalid && form.controls.login.touched">
+              Please provide a valid login
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput type="password" placeholder="Password" formControlName="password" name="password" required>
+            <mat-error *ngIf="form.controls.password.invalid && form.controls.password.touched">
+              Please provide a valid password
+            </mat-error>
+
+          </mat-form-field>
+          <div class="content__buttons">
+            <button mat-raised-button [routerLink]="'/register'" color="accent">Register on competition</button>
+            <button mat-raised-button color="primary" [disabled]="form.invalid">Login</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

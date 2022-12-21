@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="wrapper__content">
+    <mat-card>
+      <mat-card-content>
+        <h2>Registration members</h2>
+
+        <mat-error *ngIf="errorMessage | async as msg">
+          {{msg}}
+        </mat-error>
+
+        <form [formGroup]="form" (ngSubmit)="registration()">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Team name</mat-label>
+            <input matInput placeholder="Team name" formControlName="teamName" required>
+            <mat-error *ngIf="form.controls.teamName.invalid && form.controls.teamName.touched">
+              Please provide a valid login
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Group name</mat-label>
+            <input matInput placeholder="group name" formControlName="groupName" required>
+            <mat-error *ngIf="form.controls.groupName.invalid && form.controls.groupName.touched">
+              Please provide a valid group name
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Count members</mat-label>
+            <input matInput placeholder="count" formControlName="countMembers" type="number" min="0" max="10" required>
+          </mat-form-field>
+
+          <div class="content__buttons">
+            <button mat-raised-button [routerLink]="'/'" color="accent">Back</button>
+            <button mat-raised-button color="primary" [disabled]="form.invalid">Registration</button>
+          </div>
+
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
